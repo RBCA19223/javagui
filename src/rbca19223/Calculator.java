@@ -22,8 +22,7 @@ public class Calculator implements ActionListener{
 	private JTextField result;
 	private JButton mult;
 	private JButton div;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
-	
+
 
 	/**
 	 * Launch the application.
@@ -83,13 +82,75 @@ public class Calculator implements ActionListener{
 		mult.addActionListener(this);
 		
 		result = new JTextField();
-		result.setBounds(278, 200, 86, 20);
+		result.setBounds(221, 270, 86, 20);
 		frame.getContentPane().add(result);
 		result.setColumns(10);
 		
 		div = new JButton("DIV");
 		div.setBounds(474, 149, 89, 23);
 		frame.getContentPane().add(div);
+		
+		JLabel lblNewLabel = new JLabel("Num 1");
+		lblNewLabel.setBounds(98, 24, 46, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("Num 2");
+		lblNewLabel_1.setBounds(98, 90, 46, 14);
+		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("Result");
+		lblNewLabel_2.setBounds(98, 273, 46, 14);
+		frame.getContentPane().add(lblNewLabel_2);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				JOptionPane.showMessageDialog(frame,comboBox.getSelectedItem().toString());
+
+			}
+		});
+		comboBox.setModel(new DefaultComboBoxModel(new String[] { "BCA", "BBA", "BBA T&T", "BCOM", "BA"}));
+		comboBox.setBounds(437, 284, 76, 20);
+		frame.getContentPane().add(comboBox);
+		
+		JLabel lblNewLabel_3 = new JLabel("stream");
+		lblNewLabel_3.setBounds(356, 287, 46, 14);
+		frame.getContentPane().add(lblNewLabel_3);
+		
+		JCheckBox readchkbx = new JCheckBox("reading");
+		readchkbx.setBounds(596, 111, 97, 23);
+		frame.getContentPane().add(readchkbx);
+		
+		JCheckBox paintchkbx = new JCheckBox("painting");
+		paintchkbx.setBounds(596, 185, 97, 23);
+		frame.getContentPane().add(paintchkbx);
+		
+		JCheckBox singchkbx = new JCheckBox("singing");
+		singchkbx.setBounds(596, 249, 97, 23);
+		frame.getContentPane().add(singchkbx);
+		
+		JButton btnNewButton = new JButton("click");
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String msg="\n";
+				if(readchkbx.isSelected())
+				{
+					msg="reading";
+				}
+				if(paintchkbx.isSelected())
+				{
+					msg+="painting";
+				}
+				if(singchkbx.isSelected())
+				{
+					msg+="singing";
+				}
+				JOptionPane.showMessageDialog(frame,msg);
+			}
+		});
+		btnNewButton.setBounds(596, 333, 89, 23);
+		frame.getContentPane().add(btnNewButton);
 		div.addActionListener(this);
 		
 		
